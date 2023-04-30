@@ -10,7 +10,10 @@ function updatePopup() {
       var webURL = website.url
       var stripPoint = webURL.indexOf("/",10);
       var strippedURL = webURL.slice(0,stripPoint);
-      li.textContent = strippedURL + " - " + new Date(website.timestamp);
+      var options = { year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric' };
+      var dateWithoutTimezone = new Date(website.timestamp).toLocaleString('en-US', options);
+
+      li.textContent = strippedURL + " - " + dateWithoutTimezone;
       websiteList.appendChild(li);
     }
   });
